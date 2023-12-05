@@ -1,5 +1,12 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControlOptions,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import Swal from 'sweetalert2';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -18,21 +25,33 @@ export class RegisterComponent {
       terms: [true, Validators.required],
     },
     {
-      validators: this.equalPasswords('password', 'password2'),
+      validators: this.equalPasswords(
+        'password',
+        'password2'
+      ) as FormControlOptions,
     }
   );
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private userService: UserService) {}
 
   createUser() {
     this.formSubmitted = true;
     console.log(this.registerForm.value);
 
-    if (this.registerForm.valid) {
-      console.log('Posting form');
-    } else {
-      console.log('Invalid form');
+    if (this.registerForm.invalid) {
+      return;
     }
+
+    this.userService.createUser(this.registerForm.value).subscribe({
+      next: (resp) => {
+        console.log('user created');
+        console.log(resp);
+      },
+      error: (err) => {
+        Swal.fire('Error', err.error.msg, 'error');
+      },
+      complete: () => console.log('User created'),
+    });
   }
 
   invalidField(field: string): boolean {
