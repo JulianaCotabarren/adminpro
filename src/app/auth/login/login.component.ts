@@ -13,8 +13,11 @@ export class LoginComponent {
   public formSubnitted = false;
 
   public loginForm: FormGroup = this.fb.group({
-    email: ['johndoe@email.com', [Validators.required, Validators.email]],
-    password: ['12345678', Validators.required],
+    email: [
+      localStorage.getItem('email' || ''),
+      [Validators.required, Validators.email],
+    ],
+    password: ['', Validators.required],
     remember: [false],
   });
 
@@ -27,7 +30,11 @@ export class LoginComponent {
   login() {
     this.userService.login(this.loginForm.value).subscribe({
       next: (resp) => {
-        console.log(resp);
+        if (this.loginForm.get('remember')?.value) {
+          localStorage.setItem('email', this.loginForm.get('email')?.value);
+        } else {
+          localStorage.removeItem('email');
+        }
       },
       error: (err) => {
         Swal.fire('Error', err.error.msg, 'error');
