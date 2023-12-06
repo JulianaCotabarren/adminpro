@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { RegisterForm } from '../interfaces/register-form.interface';
 import { environment } from 'src/environments/environment.development';
 import { LoginForm } from '../interfaces/login-form.interface';
-import { tap } from 'rxjs';
+import { Observable, catchError, map, of, tap } from 'rxjs';
 
 const base_url = environment.base_url;
 
@@ -12,6 +12,23 @@ const base_url = environment.base_url;
 })
 export class UserService {
   constructor(private http: HttpClient) {}
+
+  tokenValidation(): Observable<boolean> {
+    const token = localStorage.getItem('token') || '';
+    return this.http
+      .get(`${base_url}/login/renew`, {
+        headers: {
+          'x-token': token,
+        },
+      })
+      .pipe(
+        tap((resp: any) => {
+          localStorage.setItem('token', resp.token);
+        }),
+        map((resp) => true),
+        catchError((error) => of(false))
+      );
+  }
 
   createUser(formData: RegisterForm) {
     return this.http.post(`${base_url}/users`, formData).pipe(
