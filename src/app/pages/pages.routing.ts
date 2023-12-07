@@ -7,6 +7,7 @@ import { ProgressComponent } from './progress/progress.component';
 import { Graphic1Component } from './graphic1/graphic1.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { AuthGuard } from '../guards/auth.guard';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,11 @@ const routes: Routes = [
         path: 'settings',
         component: AccountSettingsComponent,
         data: { title: 'Settings' },
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
+        data: { title: 'User profile' },
       },
     ],
   },
