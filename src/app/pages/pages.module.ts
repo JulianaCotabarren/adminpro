@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from '../app-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from '../shared/shared.module';
 import { ComponentsModule } from '../components/components.module';
@@ -26,6 +26,7 @@ import { ProfileComponent } from './profile/profile.component';
     CommonModule,
     FormsModule,
     SharedModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     ComponentsModule,
   ],
