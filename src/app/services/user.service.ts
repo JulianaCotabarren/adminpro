@@ -6,6 +6,7 @@ import { LoginForm } from '../interfaces/login-form.interface';
 import { Observable, catchError, map, of, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { User } from '../models/user.model';
+import { LoadUser } from '../interfaces/load-users.interface';
 
 declare const google: any;
 const base_url = environment.base_url;
@@ -31,6 +32,14 @@ googleInit(){} */
 
   get uid(): string {
     return this.user.uid || '';
+  }
+
+  get headers() {
+    return {
+      headers: {
+        'x-token': this.token,
+      },
+    };
   }
 
   logout() {
@@ -103,5 +112,10 @@ googleInit(){} */
         localStorage.setItem('email', resp.email);
       })
     );
+  }
+
+  loadUsers(from: Number = 0) {
+    const url = `${base_url}/users?from=${from}`;
+    return this.http.get<LoadUser>(url, this.headers);
   }
 }

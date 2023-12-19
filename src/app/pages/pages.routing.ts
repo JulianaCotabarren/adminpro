@@ -8,6 +8,7 @@ import { Graphic1Component } from './graphic1/graphic1.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { AuthGuard } from '../guards/auth.guard';
 import { ProfileComponent } from './profile/profile.component';
+import { UsersComponent } from './maintenance/users/users.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,12 @@ const routes: Routes = [
         path: 'profile',
         component: ProfileComponent,
         data: { title: 'User profile' },
+      },
+      //Maintenance
+      {
+        path: 'users',
+        component: UsersComponent,
+        data: { title: 'Application user' },
       },
     ],
   },
