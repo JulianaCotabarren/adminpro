@@ -114,8 +114,27 @@ googleInit(){} */
     );
   }
 
-  loadUsers(from: Number = 0) {
+  loadUsers(from: number = 0) {
     const url = `${base_url}/users?from=${from}`;
-    return this.http.get<LoadUser>(url, this.headers);
+    return this.http.get<LoadUser>(url, this.headers).pipe(
+      map((resp) => {
+        const users = resp.users.map(
+          (user) =>
+            new User(
+              user.name,
+              user.email,
+              '',
+              user.img,
+              user.google,
+              user.role,
+              user.uid
+            )
+        );
+        return {
+          total: resp.total,
+          users,
+        };
+      })
+    );
   }
 }
