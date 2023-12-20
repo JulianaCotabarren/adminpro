@@ -68,6 +68,10 @@ export class ProfileComponent implements OnInit {
       .then((img) => {
         this.user.img = img;
         Swal.fire('Saved', 'Image changes were successfully saved', 'success');
+      })
+      .catch((err) => {
+        console.log(err);
+        Swal.fire('Error', 'An error uploading image has occurred', 'error');
       });
   }
 }
