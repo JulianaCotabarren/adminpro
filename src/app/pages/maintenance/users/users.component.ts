@@ -93,4 +93,12 @@ export class UsersComponent implements OnInit {
       }
     });
   }
+
+  changeRole(user: User) {
+    this.userService.saveUser(user).subscribe({
+      next: (resp) => console.log(resp),
+      error: (error) => console.log(error),
+      complete: () => console.log('changeRole completed'),
+    });
+  }
 }
