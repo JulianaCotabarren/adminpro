@@ -3,6 +3,7 @@ import { Subscription, delay } from 'rxjs';
 import { Hospital } from 'src/app/models/hospital.model';
 import { HospitalService } from 'src/app/services/hospital.service';
 import { ModalImageService } from 'src/app/services/modal-image.service';
+import { SearchesService } from 'src/app/services/searches.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,12 +13,14 @@ import Swal from 'sweetalert2';
 })
 export class HospitalsComponent implements OnInit, OnDestroy {
   public hospitals: Hospital[] = [];
+  public hospitalsTemp: Hospital[] = [];
   public loading: boolean = true;
   public imgSubs: Subscription;
 
   constructor(
     private hospitalService: HospitalService,
-    private modalImageService: ModalImageService
+    private modalImageService: ModalImageService,
+    private searchesService: SearchesService
   ) {}
 
   ngOnDestroy(): void {
@@ -89,5 +92,18 @@ export class HospitalsComponent implements OnInit, OnDestroy {
 
   openModalImage(hospital: Hospital) {
     this.modalImageService.openModal('hospitals', hospital._id, hospital.img);
+  }
+
+  search(term: string) {
+    if (term.length === 0) {
+      return this.loadHospitals();
+    }
+    this.searchesService.search('hospitals', term).subscribe({
+      next: (results) => {
+        this.hospitals = results;
+      },
+      error: (error) => console.log(error),
+      complete: () => console.log('search complete'),
+    });
   }
 }
