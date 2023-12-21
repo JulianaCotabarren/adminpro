@@ -29,14 +29,20 @@
           <table class="table table-bordered">
             <thead>
               <tr>
-                <th>Image</th>
+                <th class="w100">Image</th>
                 <th>Name</th>
                 <th class="text-nowrap">Actions</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let hospital of hospitals">
-                <td>{{ hospital.img }}</td>
+                <td class="text-center">
+                  <img
+                    [src]="hospital.img | image : 'hospitals'"
+                    [alt]="hospital.name"
+                    class="avatar cursor"
+                  />
+                </td>
                 <td>
                   <input
                     type="text"
