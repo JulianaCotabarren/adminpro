@@ -26,7 +26,9 @@ export class UsersComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnDestroy(): void {
-    this.imgSubs.unsubscribe();
+    if (this.imgSubs) {
+      this.imgSubs.unsubscribe();
+    }
   }
 
   ngOnInit(): void {
