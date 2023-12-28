@@ -23,9 +23,6 @@ export class UserService {
     private ngZone: NgZone
   ) {}
 
-  /* FUNCIONES QUE FALTAN AL FINALIZAR SECCIÓN 14: 
-googleInit(){} */
-
   get token(): string {
     return localStorage.getItem('token') || '';
   }
@@ -42,6 +39,11 @@ googleInit(){} */
     };
   }
 
+  saveLocalStorage(token: string, menu: any) {
+    localStorage.setItem('token', token);
+    localStorage.setItem('menu', JSON.stringify(menu));
+  }
+
   logout() {
     const email = localStorage.getItem('email') || '';
 
@@ -51,6 +53,7 @@ googleInit(){} */
       });
       localStorage.removeItem('token');
       localStorage.removeItem('email');
+      localStorage.removeItem('menu');
     });
   }
 
@@ -70,7 +73,7 @@ googleInit(){} */
         map((resp: any) => {
           const { email, google, name, role, img = '', uid } = resp.user;
           this.user = new User(name, email, '', img, google, role, uid);
-          localStorage.setItem('token', resp.token);
+          this.saveLocalStorage(resp.token, resp.menu);
           return true;
         }),
         catchError((error) => of(false))
@@ -80,7 +83,7 @@ googleInit(){} */
   createUser(formData: RegisterForm) {
     return this.http.post(`${base_url}/users`, formData).pipe(
       tap((resp: any) => {
-        localStorage.setItem('token', resp.token);
+        this.saveLocalStorage(resp.token, resp.menu);
       })
     );
   }
@@ -96,7 +99,7 @@ googleInit(){} */
   login(formData: LoginForm) {
     return this.http.post(`${base_url}/login`, formData).pipe(
       tap((resp: any) => {
-        localStorage.setItem('token', resp.token);
+        this.saveLocalStorage(resp.token, resp.menu);
       })
     );
   }
@@ -104,8 +107,8 @@ googleInit(){} */
   loginGoogle(token: string) {
     return this.http.post(`${base_url}/login/google`, { token }).pipe(
       tap((resp: any) => {
-        localStorage.setItem('token', resp.token);
         localStorage.setItem('email', resp.email);
+        this.saveLocalStorage(resp.token, resp.menu);
       })
     );
   }
