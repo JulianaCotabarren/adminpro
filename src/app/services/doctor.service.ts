@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { Doctor } from '../models/doctor.model';
+import { User } from '../models/user.model';
 
 const base_url = environment.base_url;
 
@@ -31,7 +32,14 @@ export class DoctorService {
       .pipe(map((resp: { ok: boolean; doctors: Doctor[] }) => resp.doctors));
   }
 
-  createDoctor(doctor: Doctor) {
+  getDoctorById(id: string) {
+    const url = `${base_url}/doctors/${id}`;
+    return this.http
+      .get(url, this.headers)
+      .pipe(map((resp: { ok: boolean; doctor: Doctor }) => resp.doctor));
+  }
+
+  createDoctor(doctor: { name: string; hospital: string }) {
     const url = `${base_url}/doctors`;
     return this.http.post(url, doctor, this.headers);
   }

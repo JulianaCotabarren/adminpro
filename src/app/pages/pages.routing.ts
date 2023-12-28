@@ -57,7 +57,7 @@ const routes: Routes = [
         data: { title: 'Application doctors' },
       },
       {
-        path: 'doctors/:id',
+        path: 'doctor/:id',
         component: DoctorComponent,
         data: { title: 'Application doctors' },
       },
