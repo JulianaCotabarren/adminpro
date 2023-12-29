@@ -50,7 +50,7 @@ export class UsersComponent implements OnInit, OnDestroy {
       error: (error) => {
         console.log(error);
       },
-      complete: () => console.log('loadUsers complete'),
+      complete: () => {},
     });
   }
 
@@ -75,7 +75,7 @@ export class UsersComponent implements OnInit, OnDestroy {
         this.users = results;
       },
       error: (error) => console.log(error),
-      complete: () => console.log('search complete'),
+      complete: () => {},
     });
   }
 
@@ -101,7 +101,7 @@ export class UsersComponent implements OnInit, OnDestroy {
               this.loadUsers();
           },
           error: (error) => console.log(error),
-          complete: () => console.log('deleteUser completed'),
+          complete: () => {},
         });
       }
     });
@@ -109,9 +109,9 @@ export class UsersComponent implements OnInit, OnDestroy {
 
   changeRole(user: User) {
     this.userService.saveUser(user).subscribe({
-      next: (resp) => console.log(resp),
+      next: (resp) => {},
       error: (error) => console.log(error),
-      complete: () => console.log('changeRole completed'),
+      complete: () => {},
     });
   }
 

@@ -31,11 +31,6 @@ export class LoginComponent implements AfterViewInit {
     private userService: UserService
   ) {}
 
-  /* FUNCIONES QUE FALTAN AL FINALIZAR SECCIÓN 14: 
-renderButton(){}, 
-startApp(){}, 
-attachSignin(){} */
-
   ngAfterViewInit(): void {
     this.googleInit();
   }
@@ -53,7 +48,6 @@ attachSignin(){} */
   }
 
   handleCredentialResponse(response: any) {
-    //console.log('Encoded JWT ID token: ' + response.credential);
     this.userService.loginGoogle(response.credential).subscribe({
       next: (resp) => {
         this.router.navigateByUrl('/');
@@ -61,7 +55,7 @@ attachSignin(){} */
       error: (err) => {
         Swal.fire('Error', err.error.msg, 'error');
       },
-      complete: () => console.log('LoginGoogle complete'),
+      complete: () => {},
     });
   }
 
@@ -78,7 +72,7 @@ attachSignin(){} */
       error: (err) => {
         Swal.fire('Error', err.error.msg, 'error');
       },
-      complete: () => console.log('Login complete'),
+      complete: () => {},
     });
   }
 }

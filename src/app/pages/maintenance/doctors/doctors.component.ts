@@ -45,7 +45,7 @@ export class DoctorsComponent implements OnInit, OnDestroy {
       error: (error) => {
         console.log(error);
       },
-      complete: () => console.log('loadDoctors complete'),
+      complete: () => {},
     });
   }
 
@@ -68,7 +68,7 @@ export class DoctorsComponent implements OnInit, OnDestroy {
               this.loadDoctors();
           },
           error: (error) => console.log(error),
-          complete: () => console.log('deleteDoctor completed'),
+          complete: () => {},
         });
       }
     });
@@ -87,7 +87,7 @@ export class DoctorsComponent implements OnInit, OnDestroy {
         this.doctors = results;
       },
       error: (error) => console.log(error),
-      complete: () => console.log('search complete'),
+      complete: () => {},
     });
   }
 }

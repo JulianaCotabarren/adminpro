@@ -44,7 +44,7 @@ export class ProfileComponent implements OnInit {
         );
       },
       error: (err) => Swal.fire('Error', err.error.msg, 'error'),
-      complete: () => console.log('Update profile complete'),
+      complete: () => {},
     });
   }
 

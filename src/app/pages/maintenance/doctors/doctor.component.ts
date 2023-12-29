@@ -73,7 +73,7 @@ export class DoctorComponent implements OnInit {
       error: (error) => {
         console.log(error);
       },
-      complete: () => console.log('loadHospitals complete'),
+      complete: () => {},
     });
   }
 
@@ -97,7 +97,7 @@ export class DoctorComponent implements OnInit {
         error: (error) => {
           console.log(error);
         },
-        complete: () => console.log('saveDoctor complete'),
+        complete: () => {},
       });
     }
   }

@@ -46,7 +46,7 @@ export class HospitalsComponent implements OnInit, OnDestroy {
       error: (error) => {
         console.log(error);
       },
-      complete: () => console.log('loadHospitals complete'),
+      complete: () => {},
     });
   }
 
@@ -56,7 +56,7 @@ export class HospitalsComponent implements OnInit, OnDestroy {
         Swal.fire('Hospital updated', hospital.name, 'success');
       },
       error: (error) => console.log(error),
-      complete: () => console.log('updateHospital completed'),
+      complete: () => {},
     });
   }
 
@@ -67,7 +67,7 @@ export class HospitalsComponent implements OnInit, OnDestroy {
         Swal.fire('Hospital deleted', hospital.name, 'success');
       },
       error: (error) => console.log(error),
-      complete: () => console.log('deleteHospital completed'),
+      complete: () => {},
     });
   }
 
@@ -85,7 +85,7 @@ export class HospitalsComponent implements OnInit, OnDestroy {
           this.hospitals.push(resp.hospital);
         },
         error: (error) => console.log(error),
-        complete: () => console.log('createHospital completed'),
+        complete: () => {},
       });
     }
   }
@@ -103,7 +103,7 @@ export class HospitalsComponent implements OnInit, OnDestroy {
         this.hospitals = results;
       },
       error: (error) => console.log(error),
-      complete: () => console.log('search complete'),
+      complete: () => {},
     });
   }
 }

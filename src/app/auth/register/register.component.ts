@@ -41,7 +41,6 @@ export class RegisterComponent {
 
   createUser() {
     this.formSubmitted = true;
-    console.log(this.registerForm.value);
 
     if (this.registerForm.invalid) {
       return;
@@ -54,7 +53,7 @@ export class RegisterComponent {
       error: (err) => {
         Swal.fire('Error', err.error.msg, 'error');
       },
-      complete: () => console.log('User created'),
+      complete: () => {},
     });
   }
 

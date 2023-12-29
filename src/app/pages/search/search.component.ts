@@ -28,7 +28,6 @@ export class SearchComponent implements OnInit {
 
   globalSearch(term: string) {
     this.searchesService.globalSearch(term).subscribe((resp: any) => {
-      console.log(resp);
       this.users = resp.users;
       this.doctors = resp.doctors;
       this.hospitals = resp.hospitals;

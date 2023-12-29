@@ -31,7 +31,6 @@ export class ModalImageService {
     } else {
       this.img = `${base_url}/uploads/${type}/${img}`;
     }
-    /* this.img = img; */
   }
 
   closeModal() {
