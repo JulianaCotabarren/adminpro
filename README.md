@@ -35,17 +35,25 @@ The project was deployed using Netlify.
 
 To run the project locally follow the next steps:
 
-1. Clone the project: `git clone https://github.com/JulianaCotabarren/adminpro`
+1. Clone the project: `git clone https://github.com/JulianaCotabarren/adminpro-backend`
 
-2. Go to the project directory: `cd adminpro`
+2. Go to the project directory: `cd backend-adminpro`
 
 3. Install dependencies: `npm install`
 
-4. Run the app in the development mode: `ng serve`
+4. Run the app in the development mode: `npm run start:dev`
 
-5. Open your localhost in the indicated port to view it in the browser.
+5. Clone the project: `git clone https://github.com/JulianaCotabarren/adminpro`
 
-6. Login with _email: johndoe1@email.com_ and _password: 12345678_
+6. Go to the project directory: `cd adminpro`
+
+7. Install dependencies: `npm install`
+
+8. Run the app in the development mode: `ng serve`
+
+9. Open your localhost in the indicated port to view it in the browser.
+
+10. Login with _email: johndoe1@email.com_ and _password: 12345678_
 
 ## Website Images
 
