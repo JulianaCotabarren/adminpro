@@ -1,27 +1,58 @@
-# Adminpro
+# AdminPro
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.3.
+Administrative platform designed to manage doctors, hospitals and users.
+This project was generated with _Angular CLI_ version 16.2.3.
 
-## Development server
+## Tech Stack
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- MEAN Stack: Mongo - Express - Angular - Node
+- Form validation.
+- AdminGuard.
+- LazyLoad.
+- Styles with CSS.
+- Other tools: ng2-charts, SweetAlert2.
 
-## Code scaffolding
+## Functionalities
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Login with email and password or Google SignIn.
+- Sign Up form.
+- Graphics displayed with ng2-charts.
+- CRUD of Users, Hospitals and Doctors.
+- Users, Hospitals and Doctors maintenance:
+  - Input search.
+  - Table with total items and pagination.
+  - Edit or remove items.
+  - Change user's image.
 
-## Build
+## Deployment
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+The project was deployed using Netlify.
+[Adminpro](https://preeminent-tulumba-a5a972.netlify.app/)
 
-## Running unit tests
+## Usage
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+**IMPORTANT:** The project was developed using **npm 9.5.1 version**. Please, check your npm version to avoid problems.
 
-## Running end-to-end tests
+To run the project locally follow the next steps:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. Clone the project: `git clone https://github.com/JulianaCotabarren/adminpro`
 
-## Further help
+2. Go to the project directory: `cd adminpro`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+3. Install dependencies: `npm install`
+
+4. Run the app in the development mode: `ng serve`
+
+5. Open your localhost in the indicated port to view it in the browser.
+
+6. Login with _email: johndoe1@email.com_ and _password: 12345678_
+
+## Website Images
+
+![LogIn](./src/assets/login.png)
+![Register](./src/assets/register.png)
+![Dashboard](./src/assets/dashboard.png)
+![User profile](./src/assets/userprofile.png)
+![Users](./src/assets/users.png)
+![Hospitals](./src/assets/hospitals.png)
+![Doctor maintenance](./src/assets/doctor.png)
