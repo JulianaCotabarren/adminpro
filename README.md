@@ -24,11 +24,6 @@ This project was generated with _Angular CLI_ version 16.2.3.
   - Edit or remove items.
   - Change user's image.
 
-## Deployment
-
-The project was deployed using Netlify.
-[Adminpro](https://preeminent-tulumba-a5a972.netlify.app/)
-
 ## Usage
 
 **IMPORTANT:** The project was developed using **npm 9.5.1 version**. Please, check your npm version to avoid problems.
